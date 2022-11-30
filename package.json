@@ -1,6 +1,6 @@
 {
   "name": "number-2-text-vietnamese",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,7 +8,11 @@
     "dev": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
-  "keywords": ["number to text vietnamese", "number to text", "vietnamese"],
+  "keywords": [
+    "number to text vietnamese",
+    "number to text",
+    "vietnamese"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {

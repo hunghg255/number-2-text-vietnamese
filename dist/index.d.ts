@@ -1,3 +1,3 @@
 function number2TextVietnamese(number: number, seperator?: string): number | string | any;
 
-export { number2TextVietnamese }
+export default number2TextVietnamese;

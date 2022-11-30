@@ -97,4 +97,4 @@ const  number2TextVietnamese = (numberInput, seperator) => {
   return r;
 }
 
-export { number2TextVietnamese };
+export default number2TextVietnamese;
