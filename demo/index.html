@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert Text To Text Vietnamese</title>
+</head>
+
+<body>
+  <h1 class="text"></h1>
+  <h1 class="text-seperator"></h1>
+
+  <script type="text/javascript" src="../dist/index.js"></script>
+  <script type="text/javascript">
+    const elementText = document.querySelector('.text');
+    const elementText2 = document.querySelector('.text-seperator');
+    const val = number2TextVietnamese(123456)
+
+    const val2 = number2TextVietnamese(123456, ',')
+
+    elementText.innerHTML = `123456: ${val}`;
+    elementText2.innerHTML = `123456: ${val2}`;
+  </script>
+</body>
+
+</html>

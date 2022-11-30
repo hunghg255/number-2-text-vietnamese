@@ -11,7 +11,7 @@ module.exports = {
     globalObject: 'this',
     library: 'number2TextVietnamese',
     libraryTarget: 'umd',
-    libraryExport: 'default',
+    libraryExport: 'number2TextVietnamese',
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
   },

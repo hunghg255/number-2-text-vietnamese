@@ -28,7 +28,7 @@ const hang = ['trăm', 'nghìn', 'triệu', 'tỷ'];
 
 const dacbiet = [null, 'mốt', null, null, 'tư', 'lăm'];
 
-function number2TextVietnamese(numberInput, seperator) {
+const  number2TextVietnamese = (numberInput, seperator) => {
   const s = [];
   let r = [];
   let n;
