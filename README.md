@@ -22,7 +22,7 @@ yarn add number-2-text-vietnamese
 #### Basic usage:
 
 ```js
-import { number2TextVietnamese } from 'number-2-text-vietnamese';
+import number2TextVietnamese from 'number-2-text-vietnamese';
 
 // Using without seperator
 number2TextVietnamese(123);
