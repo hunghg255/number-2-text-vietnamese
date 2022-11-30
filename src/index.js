@@ -72,12 +72,14 @@ function Command(i, j, number, res) {
           res.push(c == 0 ? so[d] : dacbiet[d]);
           break;
         default:
-          res.push(so[d]);
+          if (res?.length > 1) res.push(so[d]);
           break;
       }
 
       const n = number.length - i;
-      if (n > 0) res.push(hang[Math.floor(((n - 1) % 3) + 1)]);
+      if (n > 0 ) {
+        res.push(hang[Math.floor(((n - 1) % 3) + 1)]);
+      }
     }
   }
 }
@@ -104,8 +106,8 @@ const chunk = (numberAbs) => {
 
 function number2TextVietnamese(numberInput, seperator) {
   let res = [];
-
-  let number = chunk(numberInput);
+  let numberAbs = numberInput?.startsWith('-') ? numberInput.slice(1) : numberInput;
+  let number = chunk(numberAbs);
   let k = 0;
 
   while (k < number.length) {
@@ -117,7 +119,7 @@ function number2TextVietnamese(numberInput, seperator) {
   res = res.join(' ').trim();
   if (seperator) res = res.replaceAll(` ${seperator} `, `${seperator} `);
   res = !res ? so[numberAbs] : res;
-  // res = numberInput < 0 ? `âm ${res}` : res;
+  if (numberInput?.startsWith('-')) res = `âm ${res}`;
 
   return res;
 }
