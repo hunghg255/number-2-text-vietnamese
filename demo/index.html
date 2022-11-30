@@ -9,19 +9,23 @@
 </head>
 
 <body>
+  <h1>Convert number to string</h1>
+  <input type="number" class="ipNumber" value="123456" />
   <h1 class="text"></h1>
-  <h1 class="text-seperator"></h1>
 
   <script type="text/javascript" src="../dist/index.js"></script>
   <script type="text/javascript">
     const elementText = document.querySelector('.text');
-    const elementText2 = document.querySelector('.text-seperator');
-    const val = number2TextVietnamese(123456)
+    const elementIpNumber= document.querySelector('.ipNumber');
+    const val = number2TextVietnamese(elementIpNumber.value)
+    elementText.innerHTML = `Result: ${val}`;
 
-    const val2 = number2TextVietnamese(123456, ',')
+    elementIpNumber.addEventListener('change', () => {
+      const val = number2TextVietnamese(elementIpNumber.value)
 
-    elementText.innerHTML = `123456: ${val}`;
-    elementText2.innerHTML = `123456: ${val2}`;
+      elementText.innerHTML = `Result: ${val}`;
+    });
+
   </script>
 </body>
 

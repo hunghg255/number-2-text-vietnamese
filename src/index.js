@@ -28,73 +28,98 @@ const hang = ['trăm', 'nghìn', 'triệu', 'tỷ'];
 
 const dacbiet = [null, 'mốt', null, null, 'tư', 'lăm'];
 
-const  number2TextVietnamese = (numberInput, seperator) => {
+function Command(i, j, number, res) {
   const s = [];
-  let r = [];
-  let n;
-  let number = Math.abs(numberInput);
+  let k = number.length;
 
-  if (!Number.isInteger(number)) return number;
-
-  if (Math.abs(number) > 9007199254740991) {
-    return 'Your number is too big';
+  if (j != null) {
+    ++i;
   }
 
-  while (1) {
-    s.push(Math.floor(number % 1000));
-    if ((number /= 1000) === 0) break;
+  while (k > i) {
+    s.push(number[--k]);
   }
 
-  while ((n = s.length)) {
-    if (r.length > 0) {
-      r.push(
-        hang[Math.floor((n - 1) % 3) + 1] + (seperator ? `${seperator} ` : '')
-      );
-    }
+  if (j != null) {
+    let v = parseInt(number[i - 1]);
 
-    const a = s.pop();
-    if (a === 0) continue;
-
-    let c = Math.floor(a % 100);
-    const t = Math.floor(a / 100);
-    const d = Math.floor(c % 10);
+    let t = Math.floor(v / 100);
+    let c = Math.floor(v % 100);
+    let d = Math.floor(c % 10);
 
     c = Math.floor(c / 10);
 
-    if (r.length || t) {
-      r.push(so[t]);
-      r.push(hang[0]);
-    }
+    if (j == 0) {
+      if (t != 0 || res.length > 0) {
+        res.push(so[t], hang[0]);
+      }
+    } else if (j == 1) {
+      if (c !== 0 || res.length > 0) {
+        res.push(chuc[c]);
+      }
+    } else {
+      switch (d) {
+        // case 0:
+        //   if (res.length > 1) res.push(so[d]);
+        //   break;
+        case 1:
+          res.push(c < 2 ? so[d] : dacbiet[d]);
+          break;
+        case 4:
+          res.push(c == 1 ? so[d] : dacbiet[d]);
+          break;
+        case 5:
+          res.push(c == 0 ? so[d] : dacbiet[d]);
+          break;
+        default:
+          res.push(so[d]);
+          break;
+      }
 
-    if (r.length || c) {
-      r.push(chuc[c]);
-    }
-
-    switch (d) {
-      case 0:
-        break;
-      case 1:
-        r.push(c < 2 ? so[d] : dacbiet[d]);
-        break;
-      case 4:
-        r.push(c == 1 ? so[d] : dacbiet[d]);
-        break;
-      case 5:
-        r.push(c == 0 ? so[d] : dacbiet[d]);
-        break;
-      default:
-        r.push(so[d]);
-        break;
+      const n = number.length - i;
+      if (n > 0) res.push(hang[Math.floor(((n - 1) % 3) + 1)]);
     }
   }
+}
 
-  r = r.join(' ').trim();
-  r = !r ? so[number] : r;
-  r = r.endsWith(seperator) ? r.slice(0, -1) : r;
-  r = r.endsWith('linh') ? r.slice(0, -5) : r;
-  r = numberInput < 0 ? `âm ${r}` : r;
+const chunk = (numberAbs) => {
+  const str = numberAbs.toString();
+  const cache = [];
+  const number = [];
+  let i = str.length - 1;
+  while (i >= 0 && i < str.length) {
+    if (cache.length === 3) {
+      number.unshift(cache.join(''));
+      cache.length = 0;
+    }
+    cache.unshift(str[i]);
 
-  return r;
+    if (i === 0 && cache.length) number.unshift(cache.join(''));
+
+    i = i - 1;
+  }
+
+  return number;
+};
+
+function number2TextVietnamese(numberInput, seperator) {
+  let res = [];
+
+  let number = chunk(numberInput);
+  let k = 0;
+
+  while (k < number.length) {
+    for (let j = 0; j < 3; j++) Command(k, j, number, res);
+    if (k < number.length - 1 && seperator) res.push(seperator);
+    k++;
+  }
+
+  res = res.join(' ').trim();
+  if (seperator) res = res.replaceAll(` ${seperator} `, `${seperator} `);
+  res = !res ? so[numberAbs] : res;
+  // res = numberInput < 0 ? `âm ${res}` : res;
+
+  return res;
 }
 
 export default number2TextVietnamese;
