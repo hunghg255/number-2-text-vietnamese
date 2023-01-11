@@ -1,7 +1,7 @@
 # Convert number to text vietnamese
 
-[![npm version](https://badge.fury.io/js/number-2-text-vietnamese.svg)](https://badge.fury.io/js/number-2-text-vietnamese) [![npm](https://img.shields.io/npm/dw/number-2-text-vietnamese.svg?logo=npm)](https://www.npmjs.com/package/number-2-text-vietnamese) [![npm](https://img.shields.io/bundlephobia/minzip/number-2-text-vietnamese)](https://www.npmjs.com/package/number-2-text-vietnamese)
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![npm version](https://badge.fury.io/js/number-2-text-vietnamese.svg)](https://badge.fury.io/js/number-2-text-vietnamese) [![npm](https://img.shields.io/npm/dt/number-2-text-vietnamese.svg?logo=npm)](https://www.npmjs.com/package/number-2-text-vietnamese) [![npm](https://img.shields.io/bundlephobia/minzip/number-2-text-vietnamese)](https://www.npmjs.com/package/number-2-text-vietnamese)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
